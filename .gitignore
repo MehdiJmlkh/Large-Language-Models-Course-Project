@@ -1,0 +1,6 @@
+*.json
+nuScenes-panoptic-v1.0-mini/
+nuscenes-prediction-challenge-trajectory-sets/
+v1.0-test_meta/
+NuScenes.ipynb
+prediction_tutorial.ipynb
