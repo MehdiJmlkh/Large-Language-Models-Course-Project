@@ -1,6 +1,9 @@
 *.json
 nuScenes-panoptic-v1.0-mini/
+nuScenes-lidarseg-mini-v1.0/
 nuscenes-prediction-challenge-trajectory-sets/
+nuScenes-lidarseg-mini-v1.0.tar.bz2
 v1.0-test_meta/
 NuScenes.ipynb
 prediction_tutorial.ipynb
+*.pdf
