@@ -40,3 +40,8 @@ batch1:
 - Epoch 1/3, student loss: 1.160824
 - Epoch 2/3, student loss: 1.117184
 - Epoch 3/3, student loss: 1.114020
+
+batch2:
+- Epoch 1/3, student loss: 1.078500
+- Epoch 2/3, student loss: 1.076965
+- Epoch 3/3, student loss: 1.076273
