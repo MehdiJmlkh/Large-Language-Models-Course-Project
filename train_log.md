@@ -29,11 +29,6 @@ batch5:
 - Epoch 2/3, student loss: 1.089750
 - Epoch 3/3, student loss: 1.081430
 
-batch6:
-- Epoch 1/3, student loss: 1.132564
-- Epoch 2/3, student loss: 1.098047
-- Epoch 3/3, student loss: 1.095398
-
 # Fine-tune with tower
 
 batch0:
@@ -50,3 +45,8 @@ batch2:
 - Epoch 1/3, student loss: 1.078500
 - Epoch 2/3, student loss: 1.076965
 - Epoch 3/3, student loss: 1.076273
+
+batch3:
+- Epoch 1/3, student loss: 1.132564
+- Epoch 2/3, student loss: 1.098047
+- Epoch 3/3, student loss: 1.095398
