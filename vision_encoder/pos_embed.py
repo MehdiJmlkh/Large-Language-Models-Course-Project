@@ -21,6 +21,7 @@ def get_matry_n(num_visual_tokens):
 
     raise ValueError(f"Invalid input: {num_visual_tokens}")
 
+
 def get_abs_pos(abs_pos, tgt_size):
     # abs_pos: L, C
     # tgt_size: (H, W)
@@ -50,10 +51,10 @@ def get_2d_sincos_pos_embed(embed_dim, grid_size, cls_token=False):
 
     grid = grid.reshape([2, 1, grid_size, grid_size])
 
-
     pos_embed = get_2d_sincos_pos_embed_from_grid(embed_dim, grid)
     if cls_token:
-        pos_embed = np.concatenate([np.zeros([1, embed_dim]), pos_embed], axis=0)
+        pos_embed = np.concatenate(
+            [np.zeros([1, embed_dim]), pos_embed], axis=0)
     return pos_embed
 
 
@@ -61,8 +62,10 @@ def get_2d_sincos_pos_embed_from_grid(embed_dim, grid):
     assert embed_dim % 2 == 0
 
     # use half of dimensions to encode grid_h
-    emb_h = get_1d_sincos_pos_embed_from_grid(embed_dim // 2, grid[0])  # (H*W, D/2)
-    emb_w = get_1d_sincos_pos_embed_from_grid(embed_dim // 2, grid[1])  # (H*W, D/2)
+    emb_h = get_1d_sincos_pos_embed_from_grid(
+        embed_dim // 2, grid[0])  # (H*W, D/2)
+    emb_w = get_1d_sincos_pos_embed_from_grid(
+        embed_dim // 2, grid[1])  # (H*W, D/2)
 
     emb = np.concatenate([emb_h, emb_w], axis=1)  # (H*W, D)
     return emb

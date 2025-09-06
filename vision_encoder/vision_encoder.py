@@ -39,19 +39,16 @@ class MultiCropVisionEncoder(nn.Module, PyTorchModelHubMixin):
         assert b4 % self.num_resamplers == 0, "Batch size must be divisible by number of resamplers"
         batch_size = b4 // self.num_resamplers
 
-        # image = np.transpose(pixel_values[0].cpu().numpy(), (1, 2, 0))
-        # plt.imshow(image / 255.0)
-        # plt.show()
-
-        pixel_values = pixel_values.view(batch_size, self.num_resamplers, c, h, w)
+        pixel_values = pixel_values.view(
+            batch_size, self.num_resamplers, c, h, w)
         patch_embeddings_list = []
         for i in range(self.num_resamplers):
             sub_batch = pixel_values[:, i, :, :, :]
 
             resized_sub_batch = F_transforms.resize(sub_batch, size=(432, 432))
 
-
-            vision_outputs = self.vision_tower(pixel_values=resized_sub_batch, interpolate_pos_encoding=True)
+            vision_outputs = self.vision_tower(
+                pixel_values=resized_sub_batch, interpolate_pos_encoding=True)
             embeddings = vision_outputs.last_hidden_state
 
             embeddings = embeddings.to(torch.bfloat16)
@@ -61,15 +58,11 @@ class MultiCropVisionEncoder(nn.Module, PyTorchModelHubMixin):
 
             patch_embeddings_list.append(embeddings)
 
-
-        out = self.multi_resampler(patch_embeddings_list, num_visual_tokens=self.grid_size**2 * self.num_resamplers)
+        out = self.multi_resampler(
+            patch_embeddings_list, num_visual_tokens=self.grid_size**2 * self.num_resamplers)
 
         stacked = torch.stack(out, dim=1)
         out = stacked.view(-1, stacked.shape[-2], stacked.shape[-1])
-        out = out.to(device=pixel_values.device,dtype=torch.bfloat16)
+        out = out.to(device=pixel_values.device, dtype=torch.bfloat16)
 
-        # out = out.view(batch_size * self.num_resamplers, self.grid_size**2, self.embed_dim).to(
-        #     device=pixel_values.device,
-        #     dtype=torch.bfloat16
-        # )
         return BaseModelOutput(last_hidden_state=out)
