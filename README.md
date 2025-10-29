@@ -20,3 +20,23 @@ to take a hybrid approach by guiding the planning
 model with a LLM, leveraging its general adaptability while maintaining the memory and time efficiency of small models similar to DiMA (Hegdeet al., 2025). We decided to implement a framework that
 leverages the power of LLMs and provides insight and scene understanding that can later be
 used for guiding a smaller model to perform autonomous driving.
+
+## Our Approach
+We aimed to design a VLM and train via a question-answering (QA) task. The training is intended to help the model learn to extract meaningful visual features, which
+can later facilitate the distillation of the LLM into a VAD in future work. The architecture of our proposed model is shown below:
+
+![](docs/figures/architecture.png)
+
+## Training Stages
+To train the new vision model, we used knowledge transfer principles. Then we fine-tuned the VLM by using Quantized-LoRA for all linear modules.
+
+![](docs/figures/train.png)
+
+## Results
+The evaluation results of the three models — SmolVLM, SmolVLM-FT, and our proposed SmolDriver — using BLEU and BERTScore are presented below.
+
+![](docs/figures/metrics.png)
+
+---
+For more details, please refer to the [paper](https://github.com/MehdiJmlkh/Large-Language-Models-Course-Project/blob/master/docs/SmolDriver.pdf) available in this repository.
+
