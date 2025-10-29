@@ -25,7 +25,10 @@ used for guiding a smaller model to perform autonomous driving.
 We aimed to design a VLM and train via a question-answering (QA) task. The training is intended to help the model learn to extract meaningful visual features, which
 can later facilitate the distillation of the LLM into a VAD in future work. The architecture of our proposed model is shown below:
 
-![](docs/figures/architecture.png)
+<p align="center">
+  <img src="docs/figures/architecture.png" alt="Model" width="400">
+</p>
+
 
 ## Training Stages
 To train the new vision model, we used knowledge transfer principles. Then we fine-tuned the VLM by using Quantized-LoRA for all linear modules.
