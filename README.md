@@ -26,7 +26,8 @@ We aimed to design a VLM and train via a question-answering (QA) task. The train
 can later facilitate the distillation of the LLM into a VAD in future work. The architecture of our proposed model is shown below:
 
 <p align="center">
-  <img src="docs/figures/architecture.png" alt="Model" width="400">
+  <img src="docs/figures/architecture.png">
+
 </p>
 
 
@@ -34,7 +35,7 @@ can later facilitate the distillation of the LLM into a VAD in future work. The 
 To train the new vision model, we used knowledge transfer principles. Then we fine-tuned the VLM by using Quantized-LoRA for all linear modules.
 
 <p align="center">
-  <img src="docs/figures/train.png" alt="Model" width="400">
+  <img src="docs/figures/train.png">
 </p>
 
 ## Results
