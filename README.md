@@ -33,7 +33,9 @@ can later facilitate the distillation of the LLM into a VAD in future work. The 
 ## Training Stages
 To train the new vision model, we used knowledge transfer principles. Then we fine-tuned the VLM by using Quantized-LoRA for all linear modules.
 
-![](docs/figures/train.png)
+<p align="center">
+  <img src="docs/figures/train.png" alt="Model" width="400">
+</p>
 
 ## Results
 The evaluation results of the three models — SmolVLM, SmolVLM-FT, and our proposed SmolDriver — using BLEU and BERTScore are presented below.
